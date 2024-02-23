@@ -1,3 +1,12 @@
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { Home } from 'pages'
+
+const queryClient = new QueryClient()
+
 export default function App() {
-  return <div className="text-3xl font-bold underline">Home</div>
+  return (
+    <QueryClientProvider client={queryClient}>
+      <Home />
+    </QueryClientProvider>
+  )
 }
