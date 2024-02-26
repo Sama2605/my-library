@@ -7,7 +7,7 @@ export function Home() {
   if (isLoading) return <div>Loading...</div>
 
   return (
-    <div className="">
+    <div className="p-5">
       <BookTable data={books} />
     </div>
   )
