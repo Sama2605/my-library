@@ -1,6 +1,8 @@
 import { Book } from 'types'
 import { BookTableCell } from './BookTableCell'
-import { BookTableCellLink } from 'components/BookTableCellLink'
+import { CopyToClipboard } from 'components/common'
+import { BookTableCellLink } from './BookTableCellLink'
+import { ReactNode } from 'react'
 
 interface Props {
   data: Book[]
@@ -23,10 +25,20 @@ export function BookTable({ data }: Props) {
       <tbody>
         {data.map(({ id, title, author, published, link, rating, status }) => (
           <tr className="border border-slate-150" key={id}>
-            <BookTableCell important>{title}</BookTableCell>
-            <BookTableCell>{author}</BookTableCell>
+            <BookTableCell important>
+              <BookTableCopy>
+                {title} <CopyToClipboard textToCopy={title} />
+              </BookTableCopy>
+            </BookTableCell>
+            <BookTableCell>
+              <BookTableCopy>
+                {author} <CopyToClipboard textToCopy={author} />
+              </BookTableCopy>
+            </BookTableCell>
             <BookTableCell>{published}</BookTableCell>
-            <BookTableCellLink href={link}>{title}</BookTableCellLink>
+            <BookTableCell>
+              <BookTableCellLink href={link}>{title}</BookTableCellLink>
+            </BookTableCell>
             <BookTableCell>{rating}</BookTableCell>
             <BookTableCell>{status}</BookTableCell>
           </tr>
@@ -34,4 +46,12 @@ export function BookTable({ data }: Props) {
       </tbody>
     </table>
   )
+}
+
+interface BookTableCopyProps {
+  children: ReactNode
+}
+
+function BookTableCopy({ children }: BookTableCopyProps) {
+  return <div className="flex items-center gap-2">{children}</div>
 }
