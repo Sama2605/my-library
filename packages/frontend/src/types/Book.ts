@@ -5,5 +5,5 @@ export interface Book {
   published: number
   link: string
   rating: number
-  status: string
+  status: 'available' | 'lost' | 'borrowed'
 }

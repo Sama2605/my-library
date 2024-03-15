@@ -1,3 +1,4 @@
+// status - false for not available, true for available
 export const booksData = [
   {
     id: 1,
@@ -6,7 +7,7 @@ export const booksData = [
     published: 1925,
     link: 'https://lubimyczytac.pl/ksiazka/4987700/wielki-gatsby',
     rating: 7.1,
-    status: 'dostępna',
+    status: 'available',
   },
   {
     id: 2,
@@ -15,7 +16,7 @@ export const booksData = [
     published: 1960,
     link: 'https://lubimyczytac.pl/ksiazka/270109/zabic-drozda',
     rating: 8.1,
-    status: 'dostępna',
+    status: 'borrowed',
   },
   {
     id: 3,
@@ -24,6 +25,6 @@ export const booksData = [
     published: 1949,
     link: 'https://lubimyczytac.pl/ksiazka/4999480/rok-1984',
     rating: 8.4,
-    status: 'pożyczona',
+    status: 'lost',
   },
 ]
