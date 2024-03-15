@@ -1,8 +1,10 @@
 import { Book } from 'types'
 import { BookTableCell } from './BookTableCell'
 import { CopyToClipboard } from 'components/common'
-import { BookTableCellLink } from './BookTableCellLink'
 import { ReactNode } from 'react'
+import { BookTableCellLink } from './BookTableCellLink'
+import { BookAvailable } from './BookAvailable'
+import { StarIcon, TreeDotsIcon } from 'components/common/Icon'
 
 interface Props {
   data: Book[]
@@ -20,6 +22,7 @@ export function BookTable({ data }: Props) {
               {name}
             </th>
           ))}
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -37,10 +40,17 @@ export function BookTable({ data }: Props) {
             </BookTableCell>
             <BookTableCell>{published}</BookTableCell>
             <BookTableCell>
-              <BookTableCellLink href={link}>{title}</BookTableCellLink>
+              <BookTableCellLink href={link} />
             </BookTableCell>
-            <BookTableCell>{rating}</BookTableCell>
-            <BookTableCell>{status}</BookTableCell>
+            <BookTableCell className="text-indigo-700 flex items-center text-xs gap-1">
+              <StarIcon /> <div className="text-gray-600">{rating}</div>
+            </BookTableCell>
+            <BookTableCell>
+              <BookAvailable status={status} />
+            </BookTableCell>
+            <BookTableCell>
+              <TreeDotsIcon />
+            </BookTableCell>
           </tr>
         ))}
       </tbody>

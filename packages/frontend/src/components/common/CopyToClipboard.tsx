@@ -7,7 +7,7 @@ interface Props {
 
 export function CopyToClipboard({ textToCopy }: Props) {
   return (
-    <button className="text-indigo-700" onClick={() => copy(textToCopy)}>
+    <button className="text-indigo-700 hover:text-indigo-950" onClick={() => copy(textToCopy)}>
       <LinkIcon />
     </button>
   )

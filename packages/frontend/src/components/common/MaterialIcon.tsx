@@ -12,15 +12,24 @@ interface IconBaseProps extends IconProps {
 }
 
 export function createMaterialIcon(name: string) {
-  return function Component({ color, size }: IconProps) {
+  return function Component({ size, className }: IconProps) {
     return (
-      <MaterialIcon color={color} size={size}>
+      <MaterialIcon className={className} size={size}>
         {name}
       </MaterialIcon>
     )
   }
 }
 
-function MaterialIcon({ children }: IconBaseProps) {
-  return <span className="material-symbols-rounded">{children}</span>
+function MaterialIcon({ children, size = 24, className = '' }: IconBaseProps) {
+  return (
+    <span
+      className={`material-symbols-rounded ${className}`}
+      style={{
+        fontSize: `${size}px`,
+      }}
+    >
+      {children}
+    </span>
+  )
 }
