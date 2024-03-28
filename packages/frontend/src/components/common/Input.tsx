@@ -1,4 +1,14 @@
-interface InputProps 
-export function Input() {
-  return <input type />
+import { InputHTMLAttributes, ReactNode } from 'react'
+
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+  label: ReactNode
+}
+
+export function Input({ label, ...props }: InputProps) {
+  return (
+    <div className="mb-3">
+      <label className="block font-semibold tracking-wide mb-1 text-sm">{label}</label>
+      <input className="block bg-gray-100 w-full p-2 outline-indigo-700" {...props} />
+    </div>
+  )
 }
