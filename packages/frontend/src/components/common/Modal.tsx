@@ -13,8 +13,8 @@ export function Modal({ children, isOpen, setIsOpen }: Props) {
     <>
       {isOpen &&
         createPortal(
-          <div className="absolute top-0 h-full w-full flex items-center justify-center ">
-            <div className="relative bg-white z-10 w-[30rem] p-8 rounded">
+          <div className="absolute top-0 h-full w-full flex items-center justify-center">
+            <div className="relative bg-white z-10 w-[30rem] p-6 rounded">
               <CloseButton onClose={() => setIsOpen(false)} />
               {children}
             </div>
