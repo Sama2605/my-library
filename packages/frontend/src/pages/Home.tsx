@@ -1,4 +1,4 @@
-import { BookForm, BookTable } from 'components/Book'
+import { BookFormModal, BookTable } from 'components/Book'
 import { useBooks } from 'hooks/useBooks'
 
 export function Home() {
@@ -8,7 +8,7 @@ export function Home() {
 
   return (
     <div className="p-5">
-      <BookForm />
+      <BookFormModal />
       <BookTable data={books} />
     </div>
   )
