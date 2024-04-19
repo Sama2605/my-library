@@ -1,5 +1,5 @@
 import { BookFormModal, BookTable } from 'components/Book'
-import { useBooks } from 'hooks/useBooks'
+import { useBooks } from 'hooks'
 
 export function Home() {
   const { books, isLoading } = useBooks()

@@ -2,6 +2,7 @@ import { Input, Select } from 'components/common'
 import { BookFormValues } from 'types'
 import { useForm } from 'react-hook-form'
 import { MouseEvent } from 'react'
+import { useAddBook } from 'hooks'
 
 interface Props {
   setShowForm: (value: boolean) => void
@@ -9,9 +10,10 @@ interface Props {
 
 export function BookForm({ setShowForm }: Props) {
   const { register, handleSubmit, reset } = useForm<BookFormValues>()
+  const addBook = useAddBook()
 
   const onSubmit = handleSubmit((data) => {
-    console.log(data)
+    addBook(data)
     reset()
     setShowForm(false)
   })

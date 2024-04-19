@@ -1,4 +1,3 @@
-// status - false for not available, true for available
 export const booksData = [
   {
     id: 1,
