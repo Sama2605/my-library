@@ -1,10 +1,10 @@
 import { Book } from 'types'
 import { BookTableCell } from './BookTableCell'
-import { CopyToClipboard } from 'components/common'
+import { CopyToClipboard, Dropdown } from 'components/common'
 import { ReactNode } from 'react'
 import { BookTableCellLink } from './BookTableCellLink'
 import { BookAvailable } from './BookAvailable'
-import { StarIcon, TreeDotsIcon } from 'components/common/Icon'
+import { StarIcon } from 'components/common/Icon'
 
 interface Props {
   data: Book[]
@@ -49,7 +49,12 @@ export function BookTable({ data }: Props) {
               <BookAvailable status={status} />
             </BookTableCell>
             <BookTableCell>
-              <TreeDotsIcon />
+              <Dropdown
+                data={[
+                  { label: 'Remove', onClick: () => console.log('remove') },
+                  { label: 'Modify', onClick: () => console.log('modify') },
+                ]}
+              />
             </BookTableCell>
           </tr>
         ))}
