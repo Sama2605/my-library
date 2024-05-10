@@ -5,6 +5,7 @@ import { ReactNode } from 'react'
 import { BookTableCellLink } from './BookTableCellLink'
 import { BookAvailable } from './BookAvailable'
 import { StarIcon } from 'components/common/Icon'
+import { useRemoveBook } from 'hooks/useRemoveBook'
 
 interface Props {
   data: Book[]
@@ -12,6 +13,7 @@ interface Props {
 
 export function BookTable({ data }: Props) {
   const headers = ['Title', 'Author', 'Published', 'Link', 'Rating', 'Status']
+  const removeBook = useRemoveBook()
 
   return (
     <table className="table-auto border-collapse bg-red w-full">
@@ -51,7 +53,7 @@ export function BookTable({ data }: Props) {
             <BookTableCell>
               <Dropdown
                 data={[
-                  { label: 'Remove', onClick: () => console.log('remove') },
+                  { label: 'Remove', onClick: () => removeBook(id) },
                   { label: 'Modify', onClick: () => console.log('modify') },
                 ]}
               />
