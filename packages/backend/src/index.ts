@@ -21,7 +21,7 @@ app.get('/books', (_req, res) => {
 app.post('/book', (req, res) => {
   const newBook = req.body
 
-  newBook.id = booksData.length + 1
+  newBook.id = Math.max(...booksData.map(({ id }) => id)) + 1
   booksData.push(newBook)
 
   fs.writeFile('src/data/books.ts', `export const booksData = ${JSON.stringify(booksData, null, 2)}`, (err) => {
@@ -32,6 +32,21 @@ app.post('/book', (req, res) => {
 
     console.log('Book added successfully:', newBook)
     res.status(201).json(newBook)
+  })
+})
+
+app.delete('/book/:bookId', (req, res) => {
+  const { bookId } = req.params
+
+  const newData = booksData.filter(({ id }) => id !== parseInt(bookId))
+  fs.writeFile('src/data/books.ts', `export const booksData = ${JSON.stringify(newData, null, 2)}`, (err) => {
+    if (err) {
+      console.error('Error writing file:', err)
+      return res.status(500).json({ error: 'Internal server error' })
+    }
+
+    console.log('Book removed successfully:', bookId)
+    res.status(204).json({ bookId })
   })
 })
 

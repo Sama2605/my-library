@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query'
 import { Book } from 'types'
 
 export function useBooks() {
-  const { data = [], isLoading } = useQuery({ queryKey: ['books'], queryFn: getBooks })
+  const { data = [], isLoading } = useQuery({ queryKey: ['getBooks'], queryFn: getBooks })
 
   return { books: data, isLoading }
 }

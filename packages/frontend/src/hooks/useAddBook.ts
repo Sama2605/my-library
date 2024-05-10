@@ -1,9 +1,11 @@
-import { useMutation } from '@tanstack/react-query'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { BookFormValues } from 'types'
 
 export function useAddBook() {
+  const queryClient = useQueryClient()
   const { mutate } = useMutation({
     mutationFn: (book: BookFormValues) => addBook(book),
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ['getBooks'] }),
   })
 
   return mutate
